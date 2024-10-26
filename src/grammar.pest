@@ -1,0 +1,11 @@
+WHITESPACE = _{ " " | "\t" }
+
+expression = { term ~ (add_op ~ term)* }
+term = { factor ~ (mul_op ~ factor)* }
+factor = _{ number | "(" ~ expression ~ ")" }
+
+number = @{ ASCII_DIGIT+ ~ ("." ~ ASCII_DIGIT+)? }
+
+add_op = { "+" | "-" }
+mul_op = { "*" | "/" }
+
